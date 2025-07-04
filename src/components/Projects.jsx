@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Github, ArrowUp } from "lucide-react";
+import { motion } from "framer-motion";
 
 const Projects = () => {
   const projects = [
@@ -36,52 +37,99 @@ const Projects = () => {
   return (
     <section id="projects" className="py-20">
       <div className="container mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+        <motion.h2
+          className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+        >
           Featured Projects
-        </h2>
-        <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        </motion.h2>
+        <motion.div
+          className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.2 }}
+          variants={{
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.18 } }
+          }}
+        >
           {projects.map((project, index) => (
-            <div 
+            <motion.div 
               key={index}
               className="group bg-card rounded-2xl overflow-hidden shadow-lg border hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
+              viewport={{ once: false }}
             >
               <div className={`h-2 bg-gradient-to-r ${project.gradient}`}></div>
               <div className="p-8">
                 <div className="flex justify-between items-start mb-4">
-                  <h3 className="text-xl font-semibold group-hover:text-blue-600 transition-colors">
+                  <motion.h3
+                    className="text-xl font-semibold group-hover:text-blue-600 transition-colors"
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
+                    viewport={{ once: false }}
+                  >
                     {project.title}
-                  </h3>
-                  <span className="text-sm text-muted-foreground bg-muted px-3 py-1 rounded-full">
+                  </motion.h3>
+                  <motion.span
+                    className="text-sm text-muted-foreground bg-muted px-3 py-1 rounded-full"
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
+                    viewport={{ once: false }}
+                  >
                     {project.date}
-                  </span>
+                  </motion.span>
                 </div>
-                <p className="text-muted-foreground mb-6 leading-relaxed">
+                <motion.p
+                  className="text-muted-foreground mb-6 leading-relaxed"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+                  viewport={{ once: false }}
+                >
                   {project.description}
-                </p>
+                </motion.p>
                 <div className="flex flex-wrap gap-2 mb-6">
-                  {project.tech.map((tech) => (
-                    <span 
+                  {project.tech.map((tech, i) => (
+                    <motion.span 
                       key={tech}
                       className="px-3 py-1 bg-gradient-to-r from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 text-blue-700 dark:text-blue-300 rounded-full text-sm font-medium"
+                      whileHover={{ scale: 1.1 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                      initial={{ opacity: 0, y: 10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: false }}
+                      style={{ display: 'inline-block' }}
                     >
                       {tech}
-                    </span>
+                    </motion.span>
                   ))}
                 </div>
                 <div className="flex space-x-4">
-                  <Button size="sm" className="flex items-center gap-2">
-                    <Github className="w-4 h-4" />
-                    Code
-                  </Button>
-                  <Button variant="outline" size="sm" className="flex items-center gap-2">
-                    <ArrowUp className="w-4 h-4" />
-                    Live Demo
-                  </Button>
+                  <motion.div whileHover={{ scale: 1.08 }} whileTap={{ scale: 0.97 }}>
+                    <Button size="sm" className="flex items-center gap-2">
+                      <Github className="w-4 h-4" />
+                      Code
+                    </Button>
+                  </motion.div>
+                  <motion.div whileHover={{ scale: 1.08 }} whileTap={{ scale: 0.97 }}>
+                    <Button variant="outline" size="sm" className="flex items-center gap-2">
+                      <ArrowUp className="w-4 h-4" />
+                      Live Demo
+                    </Button>
+                  </motion.div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

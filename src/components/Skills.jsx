@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 
 const Skills = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -51,52 +52,83 @@ const Skills = () => {
   }, []);
 
   const SkillCategory = ({ title, skills, delay }) => (
-    <div 
-      className={isVisible ? 'animate-fade-in' : 'opacity-0'}
-      style={{ animationDelay: `${delay}ms` }}
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: false }}
+      transition={{ duration: 0.7, delay: delay / 1000, ease: "easeOut" }}
     >
       <div className="text-center mb-8">
-        <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
+        <motion.h3
+          className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false }}
+          transition={{ duration: 0.7, delay: (delay + 100) / 1000, ease: "easeOut" }}
+        >
           {title}
-        </h3>
+        </motion.h3>
       </div>
       <div className="flex flex-wrap justify-center gap-3">
         {skills.map((skill, index) => (
-          <div 
+          <motion.div
             key={skill.name}
-            className="group flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-full border border-blue-200/50 dark:border-blue-800/50 hover:shadow-lg hover:scale-105 transition-all duration-300"
-            style={{
-              animationDelay: `${delay + index * 100}ms`
-            }}
+            className="group flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-full border border-blue-200/50 dark:border-blue-800/50 hover:shadow-lg transition-all duration-300"
+            initial={{ opacity: 0, scale: 0.7 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: false }}
+            transition={{ duration: 0.5, delay: (delay + index * 100) / 1000, ease: "easeOut" }}
+            whileHover={{ scale: 1.08, boxShadow: "0 4px 24px 0 rgba(59,130,246,0.15)" }}
           >
-            <span className="text-lg group-hover:scale-110 transition-transform duration-300">
+            <motion.span
+              className="text-lg group-hover:scale-110 transition-transform duration-300"
+              whileHover={{ scale: 1.2 }}
+            >
               {skill.icon}
-            </span>
+            </motion.span>
             <span className="text-sm font-medium text-blue-700 dark:text-blue-300 group-hover:text-blue-800 dark:group-hover:text-blue-200 transition-colors">
               {skill.name}
             </span>
-          </div>
+          </motion.div>
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 
   return (
-    <section ref={sectionRef} id="skills" className="py-20 relative overflow-hidden bg-transparent">
+    <section ref={sectionRef} id="skills" className="py-20 relative overflow-hidden">
       {/* Background decoration */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-10 left-10 w-32 h-32 bg-blue-500 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-10 right-10 w-40 h-40 bg-purple-500 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+      <div className="absolute inset-0 opacity-5 pointer-events-none">
+        <motion.div
+          className="absolute top-10 left-10 w-32 h-32 bg-blue-500 rounded-full blur-3xl"
+          animate={{ y: [0, 20, 0] }}
+          transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
+        />
+        <motion.div
+          className="absolute bottom-10 right-10 w-40 h-40 bg-purple-500 rounded-full blur-3xl"
+          animate={{ y: [0, -20, 0] }}
+          transition={{ repeat: Infinity, duration: 7, ease: "easeInOut", delay: 1 }}
+        />
       </div>
       <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent">
+        <motion.div className="text-center mb-16">
+          <motion.h2
+            className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent"
+            initial={{ opacity: 0, y: 40 }}
+            animate={isVisible ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+          >
             Technical Skills
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          </motion.h2>
+          <motion.p
+            className="text-lg text-muted-foreground max-w-2xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isVisible ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
+          >
             Technologies and tools I use to build amazing digital experiences
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
         <div className="space-y-16">
           <SkillCategory title="Frontend" skills={frontendSkills} delay={200} />
           <SkillCategory title="Backend" skills={backendSkills} delay={400} />
