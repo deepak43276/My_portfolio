@@ -1,91 +1,161 @@
 import { motion } from "framer-motion";
+import { FaDownload, FaGraduationCap, FaUniversity, FaStar, FaCode, FaLaptopCode } from "react-icons/fa";
+
+const skills = ["React", "Next.js", "Node.js", "Tailwind CSS", "MongoDB", "TypeScript"];
 
 const About = () => {
   return (
-    <section id="about" className="py-20">
-      <div className="container mx-auto px-6">
-        <div className="max-w-4xl mx-auto">
-          <motion.h2
-            className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
-          >
+    <section id="about" className="py-20 bg-gray-900 relative min-h-[500px]">
+      {/* Floating animated elements */}
+      <motion.div 
+        className="absolute top-20 left-10 w-8 h-8 rounded-full bg-blue-500 opacity-20"
+        animate={{
+          y: [0, 30, 0],
+          x: [0, 15, 0]
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+      />
+      <motion.div 
+        className="absolute bottom-1/4 right-1/4 w-12 h-12 rounded-full bg-purple-500 opacity-10"
+        animate={{
+          scale: [1, 1.5, 1],
+          opacity: [0.1, 0.3, 0.1]
+        }}
+        transition={{
+          duration: 12,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+      />
+
+      <div className="container mx-auto px-6 max-w-6xl">
+        {/* Decorative header */}
+        <motion.div 
+          className="flex justify-center mb-16"
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <h2 className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 relative">
             About Me
-          </motion.h2>
+            <span className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full"></span>
+          </h2>
+        </motion.div>
+
+        <div className="grid lg:grid-cols-3 gap-8 relative z-10">
+          {/* Left Column - Profile Card */}
           <motion.div
-            className="grid md:grid-cols-2 gap-12 items-center"
-            initial="hidden"
-            whileInView="visible"
+            className="bg-gray-800 rounded-2xl shadow-2xl p-8 border-t-4 border-blue-500 transform hover:-translate-y-2 transition-transform duration-300"
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: false, amount: 0.2 }}
-            variants={{
-              hidden: {},
-              visible: { transition: { staggerChildren: 0.2 } }
-            }}
+            transition={{ duration: 0.7 }}
           >
-            <motion.div
-              className="space-y-6"
-              initial={{ opacity: 0, x: -40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7, ease: "easeOut" }}
-              viewport={{ once: false }}
-            >
-              <motion.p
-                className="text-lg leading-relaxed"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
-                viewport={{ once: false }}
-              >
-                I'm a passionate Full Stack Developer with expertise in building responsive web applications 
-                using modern frameworks. I love turning complex problems into simple, beautiful solutions.
-              </motion.p>
-              <div className="space-y-4">
-                {[
-                  { color: "bg-blue-600", text: "Bachelor of Technology in Information Technology" },
-                  { color: "bg-purple-600", text: "Government College of Engineering, Erode (2022 - 2026)" },
-                  { color: "bg-blue-600", text: "CGPA: 7.67" },
-                ].map((item, idx) => (
-                  <motion.div
-                    key={item.text}
-                    className="flex items-center space-x-3"
-                    initial={{ opacity: 0, scale: 0.7 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5, delay: 0.3 + idx * 0.1, ease: "easeOut" }}
-                    viewport={{ once: false }}
-                  >
-                    <motion.div className={`w-3 h-3 ${item.color} rounded-full`} />
-                    <span>{item.text}</span>
-                  </motion.div>
-                ))}
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white text-2xl">
+                <FaCode />
               </div>
-            </motion.div>
-            <motion.div
-              className="bg-card rounded-2xl p-8 shadow-lg border"
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7, ease: "easeOut" }}
-              viewport={{ once: false }}
-            >
-              <h3 className="text-2xl font-semibold mb-6">Career Objective</h3>
-              <motion.p
-                className="text-muted-foreground leading-relaxed"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
-                viewport={{ once: false }}
-              >
-                Seeking to enhance my problem-solving abilities and technical skills while contributing to 
-                innovative projects. Dedicated to continuous learning and staying updated with the latest 
-                technologies in web development.
-              </motion.p>
-            </motion.div>
+              <div>
+                <h3 className="text-xl font-bold text-white">Full Stack Developer</h3>
+                <p className="text-blue-300">Passionate about creating digital experiences</p>
+              </div>
+            </div>
+            <p className="text-gray-300 mb-6">
+              I'm a passionate Full Stack Developer with expertise in building responsive web applications using modern frameworks. I love turning complex problems into simple, beautiful solutions.
+            </p>
+            <div className="flex flex-wrap gap-3">
+              {skills.slice(0, 3).map(skill => (
+                <span key={skill} className="px-3 py-1 rounded-full bg-blue-900/50 text-blue-300 font-medium text-xs border border-blue-700">
+                  {skill}
+                </span>
+              ))}
+            </div>
           </motion.div>
+
+          {/* Middle Column - Timeline */}
+          <div className="space-y-8">
+            <motion.div
+              className="bg-gray-800 rounded-2xl shadow-2xl p-6 border-l-4 border-purple-500 relative pl-10"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, amount: 0.2 }}
+              transition={{ duration: 0.7, delay: 0.1 }}
+            >
+              <div className="absolute left-0 -ml-3 mt-1 w-6 h-6 rounded-full bg-purple-500 flex items-center justify-center">
+                <FaGraduationCap className="text-white text-xs" />
+              </div>
+              <h3 className="text-xl font-semibold mb-2 text-white">Education</h3>
+              <ul className="space-y-3 text-gray-300">
+                <li className="flex items-start gap-3">
+                  <div className="w-2 h-2 mt-2 rounded-full bg-blue-400 flex-shrink-0"></div>
+                  <div>
+                    <p className="font-medium">Bachelor of Technology in IT</p>
+                    <p className="text-sm text-blue-300">Government College of Engineering, Erode (2022 - 2026)</p>
+                  </div>
+                </li>
+              </ul>
+            </motion.div>
+
+            <motion.div
+              className="bg-gray-800 rounded-2xl shadow-2xl p-6 border-l-4 border-blue-500 relative pl-10"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, amount: 0.2 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+            >
+              <div className="absolute left-0 -ml-3 mt-1 w-6 h-6 rounded-full bg-blue-500 flex items-center justify-center">
+                <FaLaptopCode className="text-white text-xs" />
+              </div>
+              <h3 className="text-xl font-semibold mb-2 text-white">Experience</h3>
+              <ul className="space-y-3 text-gray-300">
+                <li className="flex items-start gap-3">
+                  <div className="w-2 h-2 mt-2 rounded-full bg-purple-400 flex-shrink-0"></div>
+                  <div>
+                    <p className="font-medium">Web Development Intern</p>
+                    <p className="text-sm text-purple-300">Zidio Development</p>
+                    <p className="text-xs mt-1 text-gray-400">Worked as a Web Development Intern, contributing to real-world projects and enhancing my skills in modern web technologies.</p>
+                  </div>
+                </li>
+              </ul>
+            </motion.div>
+          </div>
+
+          {/* Right Column - Download after Philosophy */}
+          <div className="space-y-8">
+            <motion.div
+              className="bg-gray-800/70 rounded-2xl shadow-2xl p-6 border border-gray-700 backdrop-blur-sm"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, amount: 0.2 }}
+              transition={{ duration: 0.7, delay: 0.5 }}
+            >
+              <h3 className="text-xl font-semibold mb-3 text-white">Philosophy</h3>
+              <p className="text-gray-300 italic">
+                "Seeking to enhance my problem-solving abilities and technical skills while contributing to innovative projects. Dedicated to continuous learning and staying updated with the latest technologies in web development."
+              </p>
+            </motion.div>
+            <motion.a
+              href="/resume.pdf"
+              download
+              className="block w-full px-6 py-4 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-3 group"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.6 }}
+            >
+              <FaDownload className="group-hover:animate-bounce" />
+              <span>Download Resume</span>
+            </motion.a>
+          </div>
         </div>
       </div>
     </section>
   );
 };
 
-export default About; 
+export default About;

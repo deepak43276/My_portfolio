@@ -120,14 +120,7 @@ const Skills = () => {
           >
             Technical Skills
           </motion.h2>
-          <motion.p
-            className="text-lg text-muted-foreground max-w-2xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isVisible ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
-          >
-            Technologies and tools I use to build amazing digital experiences
-          </motion.p>
+         
         </motion.div>
         <div className="space-y-16">
           <SkillCategory title="Frontend" skills={frontendSkills} delay={200} />

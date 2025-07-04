@@ -16,34 +16,36 @@ const Navigation = () => {
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     element?.scrollIntoView({ behavior: "smooth" });
-    setMenuOpen(false); // Close menu on link click
+    setMenuOpen(false);
   };
 
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-      isScrolled ? "bg-background/95 backdrop-blur-md border-b border-border" : "bg-transparent"
+      isScrolled ? "bg-gray-900/95 backdrop-blur-md border-b border-gray-800" : "bg-transparent"
     }`}>
       <div className="container mx-auto px-6 py-4">
         <div className="flex justify-between items-center">
-          <div className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+          <div className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
             DEEPAK M
           </div>
+          
           {/* Desktop nav */}
           <div className="hidden md:flex space-x-8">
             {["Home", "About", "Skills", "Projects", "Contact"].map((item) => (
               <button
                 key={item}
                 onClick={() => scrollToSection(item.toLowerCase())}
-                className="text-muted-foreground hover:text-foreground transition-colors duration-200 relative group"
+                className="text-blue-200 hover:text-white transition-colors duration-200 relative group"
               >
                 {item}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-purple-400 transition-all duration-300 group-hover:w-full"></span>
               </button>
             ))}
           </div>
-          {/* Hamburger/Close icon for mobile */}
+          
+          {/* Mobile menu button */}
           <motion.button
-            className={`md:hidden flex flex-col justify-center items-center w-10 h-10 focus:outline-none transition-colors duration-200 ${menuOpen ? 'bg-blue-100' : 'hover:bg-blue-100'}`}
+            className={`md:hidden flex flex-col justify-center items-center w-10 h-10 focus:outline-none transition-colors duration-200 ${menuOpen ? 'bg-gray-800' : 'hover:bg-gray-800'}`}
             onClick={() => setMenuOpen((prev) => !prev)}
             aria-label={menuOpen ? "Close menu" : "Open menu"}
             whileTap={{ scale: 0.85, rotate: 15 }}
@@ -55,7 +57,7 @@ const Navigation = () => {
               {menuOpen ? (
                 <motion.svg
                   key="close"
-                  className="w-6 h-6 text-foreground"
+                  className="w-6 h-6 text-blue-300"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -75,7 +77,7 @@ const Navigation = () => {
               ) : (
                 <motion.svg
                   key="hamburger"
-                  className="w-6 h-6 text-foreground"
+                  className="w-6 h-6 text-blue-300"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -96,12 +98,13 @@ const Navigation = () => {
             </AnimatePresence>
           </motion.button>
         </div>
+        
         {/* Mobile menu */}
         <AnimatePresence>
           {menuOpen && (
             <motion.div
               key="mobile-menu"
-              className="md:hidden mt-4 flex flex-col space-y-4 bg-background/95 p-4 rounded shadow-lg"
+              className="md:hidden mt-4 flex flex-col space-y-4 bg-gray-900/95 p-4 rounded-lg shadow-lg border border-gray-800"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
@@ -111,8 +114,8 @@ const Navigation = () => {
                 <motion.button
                   key={item}
                   onClick={() => scrollToSection(item.toLowerCase())}
-                  className="text-lg text-muted-foreground hover:text-foreground transition-colors duration-200 text-left rounded hover:bg-blue-100 px-2 py-1"
-                  whileHover={{ scale: 1.05, backgroundColor: "#DBEAFE" }}
+                  className="text-lg text-blue-200 hover:text-white transition-colors duration-200 text-left rounded-lg hover:bg-gray-800 px-4 py-2"
+                  whileHover={{ scale: 1.02, backgroundColor: "rgba(30, 58, 138, 0.3)" }}
                   whileTap={{ scale: 0.97 }}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}

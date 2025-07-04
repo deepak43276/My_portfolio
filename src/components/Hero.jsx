@@ -9,14 +9,7 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative">
-      <motion.div
-        className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-blue-900"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-      />
-      
+    <section id="home" className="min-h-screen flex items-center justify-center relative bg-gray-900">
       <div className="container mx-auto px-6 text-center relative z-10">
         <motion.div
           initial="hidden"
@@ -28,7 +21,7 @@ const Hero = () => {
           }}
         >
           <motion.h1
-            className="whitespace-nowrap text-[4.5rem] font-extrabold mb-6 bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-400 bg-clip-text text-transparent drop-shadow-lg text-center min-w-max leading-[1.2]"
+            className="whitespace-nowrap text-[4.5rem] font-extrabold mb-6 bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-300 bg-clip-text text-transparent drop-shadow-lg text-center min-w-max leading-[1.2]"
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false }}
@@ -37,7 +30,7 @@ const Hero = () => {
             Let's Build the Future Together
           </motion.h1>
           <motion.p
-            className="text-xl md:text-2xl text-muted-foreground mb-4"
+            className="text-xl md:text-2xl text-blue-200 mb-4"
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false }}
@@ -46,7 +39,7 @@ const Hero = () => {
             Empowering ideas with code, creativity, and cutting-edge frameworks.
           </motion.p>
           <motion.p
-            className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto"
+            className="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false }}
@@ -63,7 +56,7 @@ const Hero = () => {
           >
             <Button 
               size="lg" 
-              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-cyan-500 hover:to-blue-700 text-white px-8 py-3 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg shadow-blue-400/30"
+              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white px-8 py-3 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg shadow-blue-500/20"
               onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}
             >
               Explore Projects
@@ -71,7 +64,7 @@ const Hero = () => {
             <Button 
               variant="outline" 
               size="lg"
-              className="px-8 py-3 rounded-full border-2 border-blue-400 text-blue-600 hover:bg-blue-50 transition-all duration-300 transform hover:scale-105 shadow-md"
+              className="px-8 py-3 rounded-full border-2 border-blue-400 text-blue-300 hover:bg-gray-800 hover:text-white transition-all duration-300 transform hover:scale-105 shadow-md"
               onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
             >
               Contact Us
@@ -87,7 +80,7 @@ const Hero = () => {
         transition={{ repeat: Infinity, duration: 1.2, ease: "easeInOut" }}
         whileHover={{ scale: 1.2 }}
       >
-        <ArrowDown className="w-6 h-6 text-muted-foreground" />
+        <ArrowDown className="w-6 h-6 text-blue-300" />
       </motion.button>
     </section>
   );
