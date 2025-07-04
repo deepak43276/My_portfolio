@@ -34,6 +34,12 @@ const Skills = () => {
     { name: "Firebase", icon: "🔥" },
   ];
 
+  const allSkills = [
+    ...frontendSkills,
+    ...backendSkills,
+    ...tools,
+  ];
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -51,52 +57,8 @@ const Skills = () => {
     return () => observer.disconnect();
   }, []);
 
-  const SkillCategory = ({ title, skills, delay }) => (
-    <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: false }}
-      transition={{ duration: 0.7, delay: delay / 1000, ease: "easeOut" }}
-    >
-      <div className="text-center mb-8">
-        <motion.h3
-          className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false }}
-          transition={{ duration: 0.7, delay: (delay + 100) / 1000, ease: "easeOut" }}
-        >
-          {title}
-        </motion.h3>
-      </div>
-      <div className="flex flex-wrap justify-center gap-3">
-        {skills.map((skill, index) => (
-          <motion.div
-            key={skill.name}
-            className="group flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-full border border-blue-200/50 dark:border-blue-800/50 hover:shadow-lg transition-all duration-300"
-            initial={{ opacity: 0, scale: 0.7 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: false }}
-            transition={{ duration: 0.5, delay: (delay + index * 100) / 1000, ease: "easeOut" }}
-            whileHover={{ scale: 1.08, boxShadow: "0 4px 24px 0 rgba(59,130,246,0.15)" }}
-          >
-            <motion.span
-              className="text-lg group-hover:scale-110 transition-transform duration-300"
-              whileHover={{ scale: 1.2 }}
-            >
-              {skill.icon}
-            </motion.span>
-            <span className="text-sm font-medium text-blue-700 dark:text-blue-300 group-hover:text-blue-800 dark:group-hover:text-blue-200 transition-colors">
-              {skill.name}
-            </span>
-          </motion.div>
-        ))}
-      </div>
-    </motion.div>
-  );
-
   return (
-    <section ref={sectionRef} id="skills" className="py-20 relative overflow-hidden">
+    <section ref={sectionRef} id="skills" className="py-20 bg-gray-900 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-5 pointer-events-none">
         <motion.div
@@ -113,23 +75,40 @@ const Skills = () => {
       <div className="container mx-auto px-6 relative z-10">
         <motion.div className="text-center mb-16">
           <motion.h2
-            className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent"
+            className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-300 bg-clip-text text-transparent"
             initial={{ opacity: 0, y: 40 }}
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, ease: "easeOut" }}
           >
             Technical Skills
           </motion.h2>
-         
         </motion.div>
-        <div className="space-y-16">
-          <SkillCategory title="Frontend" skills={frontendSkills} delay={200} />
-          <SkillCategory title="Backend" skills={backendSkills} delay={400} />
-          <SkillCategory title="Tools & Others" skills={tools} delay={600} />
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 justify-center">
+          {allSkills.map((skill, index) => (
+            <motion.div
+              key={skill.name}
+              className="group flex items-center justify-center gap-2 px-4 py-2 bg-gray-800 rounded-full border border-gray-700 hover:shadow-lg transition-all duration-300 min-w-[120px] max-w-[140px]"
+              initial={{ opacity: 0, scale: 0.7 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: false }}
+              transition={{ duration: 0.5, delay: index * 0.1, ease: "easeOut" }}
+              whileHover={{ scale: 1.08, boxShadow: "0 4px 24px 0 rgba(59,130,246,0.15)" }}
+            >
+              <motion.span
+                className="text-lg group-hover:scale-110 transition-transform duration-300"
+                whileHover={{ scale: 1.2 }}
+              >
+                {skill.icon}
+              </motion.span>
+              <span className="text-sm font-medium text-blue-300 group-hover:text-blue-200 transition-colors">
+                {skill.name}
+              </span>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
   );
 };
 
-export default Skills; 
+export default Skills;
