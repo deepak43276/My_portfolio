@@ -53,7 +53,7 @@ const Footer = () => {
             
             {/* Social Links */}
             <div>
-              <h4 className="font-semibold mb-4 text-white">Links</h4>
+              <h4 className="font-semibold mb-4 text-white">Profile Links</h4>
                               <div className="grid grid-cols-3 gap-4 max-w-xs">
                   <motion.div whileHover={{ scale: 1.15 }} whileTap={{ scale: 0.95 }} title="GitHub">
                     <a 

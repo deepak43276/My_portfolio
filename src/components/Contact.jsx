@@ -105,7 +105,12 @@ const Contact = () => {
                 viewport={{ once: false }}
               >
                 <h4 className="font-semibold mb-2 text-white">Email</h4>
-                <p className="text-gray-400">deepak91913@gmail.com</p>
+                <a 
+                  href="mailto:deepak91913@gmail.com" 
+                  className="text-gray-400 hover:text-blue-400 transition-colors duration-200"
+                >
+                  deepak91913@gmail.com
+                </a>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
@@ -114,7 +119,12 @@ const Contact = () => {
                 viewport={{ once: false }}
               >
                 <h4 className="font-semibold mb-2 text-white">Phone</h4>
-                <p className="text-gray-400">+91 6374294597</p>
+                <a 
+                  href="tel:+916374294597" 
+                  className="text-gray-400 hover:text-blue-400 transition-colors duration-200"
+                >
+                  +91 6374294597
+                </a>
               </motion.div>
             </div>
           </motion.div>

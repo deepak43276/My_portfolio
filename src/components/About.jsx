@@ -42,7 +42,7 @@ const About = () => {
         >
           <h2 className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 relative">
             About Me
-            <span className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full"></span>
+            
           </h2>
         </motion.div>
 
