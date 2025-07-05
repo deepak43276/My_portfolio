@@ -75,12 +75,12 @@ const Hero = () => {
       
       <motion.button 
         onClick={scrollToNext}
-        className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2"
+        className="absolute bottom-2 sm:bottom-4 md:bottom-8 left-1/2 transform -translate-x-1/2 z-20"
         animate={{ y: [0, -10, 0] }}
         transition={{ repeat: Infinity, duration: 1.2, ease: "easeInOut" }}
         whileHover={{ scale: 1.2 }}
       >
-        <ArrowDown className="w-5 h-5 sm:w-6 sm:h-6 text-blue-300" />
+        <ArrowDown className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-blue-300 drop-shadow-lg" />
       </motion.button>
     </section>
   );
