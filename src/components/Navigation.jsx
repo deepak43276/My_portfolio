@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -13,11 +14,55 @@ const Navigation = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    const sections = ["home", "about", "skills", "projects", "contact"];
+    
+    const observerOptions = {
+      root: null,
+      rootMargin: "-20% 0px -70% 0px",
+      threshold: 0
+    };
+
+    const observerCallback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    sections.forEach((sectionId) => {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        observer.observe(element);
+      }
+    });
+
+    return () => {
+      sections.forEach((sectionId) => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          observer.unobserve(element);
+        }
+      });
+    };
+  }, []);
+
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     element?.scrollIntoView({ behavior: "smooth" });
     setMenuOpen(false);
   };
+
+  const navItems = [
+    { id: "home", label: "Home" },
+    { id: "about", label: "About" },
+    { id: "skills", label: "Skills" },
+    { id: "projects", label: "Projects" },
+    { id: "contact", label: "Contact" }
+  ];
 
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
@@ -31,14 +76,20 @@ const Navigation = () => {
           
           {/* Desktop nav */}
           <div className="hidden md:flex space-x-8">
-            {["Home", "About", "Skills", "Projects", "Contact"].map((item) => (
+            {navItems.map((item) => (
               <button
-                key={item}
-                onClick={() => scrollToSection(item.toLowerCase())}
-                className="text-blue-200 hover:text-white transition-colors duration-200 relative group"
+                key={item.id}
+                onClick={() => scrollToSection(item.id)}
+                className={`transition-colors duration-200 relative group ${
+                  activeSection === item.id 
+                    ? "text-white" 
+                    : "text-blue-200 hover:text-white"
+                }`}
               >
-                {item}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-purple-400 transition-all duration-300 group-hover:w-full"></span>
+                {item.label}
+                <span className={`absolute -bottom-1 left-0 h-0.5 bg-purple-400 transition-all duration-300 ${
+                  activeSection === item.id ? "w-full" : "w-0 group-hover:w-full"
+                }`}></span>
               </button>
             ))}
           </div>
@@ -110,18 +161,22 @@ const Navigation = () => {
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3, type: "spring", stiffness: 200, damping: 20 }}
             >
-              {["Home", "About", "Skills", "Projects", "Contact"].map((item, idx) => (
+              {navItems.map((item, idx) => (
                 <motion.button
-                  key={item}
-                  onClick={() => scrollToSection(item.toLowerCase())}
-                  className="text-lg text-blue-200 hover:text-white transition-colors duration-200 text-left rounded-lg hover:bg-gray-800 px-4 py-2"
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className={`text-lg transition-colors duration-200 text-left rounded-lg hover:bg-gray-800 px-4 py-2 ${
+                    activeSection === item.id 
+                      ? "text-white bg-blue-600/20" 
+                      : "text-blue-200 hover:text-white"
+                  }`}
                   whileHover={{ scale: 1.02, backgroundColor: "rgba(30, 58, 138, 0.3)" }}
                   whileTap={{ scale: 0.97 }}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.05 * idx, type: "spring", stiffness: 300, damping: 20 }}
                 >
-                  {item}
+                  {item.label}
                 </motion.button>
               ))}
             </motion.div>
