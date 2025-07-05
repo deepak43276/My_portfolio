@@ -30,7 +30,7 @@ const Hero = () => {
             Let's Build the Future Together
           </motion.h1>
           <motion.p
-            className="text-base md:text-xl  lg:text-2xl xl:text-2xl 2xl:text-4xl text-blue-200 mb-3 sm:mb-4 px-4"
+            className="text-sm md:text-lg lg:text-xl xl:text-xl 2xl:text-2xl text-blue-200 mb-3 sm:mb-4 px-4"
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false }}
@@ -64,10 +64,10 @@ const Hero = () => {
             <Button 
               variant="outline" 
               size="lg"
-              className="w-auto px-4 sm:px-6 lg:px-8 py-2 sm:py-3 rounded-full border-2 border-blue-400 text-blue-300 hover:bg-gray-800 hover:text-white transition-all duration-300 transform hover:scale-105 shadow-md text-xs sm:text-sm lg:text-base"
+              className="w-auto px-4 sm:px-6 lg:px-8 py-2 sm:py-3 rounded-full border-2 border-blue-400 text-blue-300 hover:bg-gray-800 hover:text-white transition-all duration-300 transform hover:scale-105 shadow-md text-xs sm:text-sm lg:text-base flex items-center gap-2"
               onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
             >
-              Contact Us
+              Get in Touch <ArrowDown className="w-4 h-4 ml-1" />
             </Button>
           </motion.div>
         </motion.div>

@@ -1,0 +1,24 @@
+.customInput {
+  display: flex;
+  height: 3rem;
+  width: 100%;
+  border-radius: 0.5rem;
+  border: 1px solid #4b5563; /* border-gray-600 */
+  background-color: #374151; /* bg-gray-700 */
+  padding: 0.75rem 1rem;
+  color: #fff;
+  font-size: 1rem;
+  line-height: 1.5;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+
+.customInput:focus {
+  border-color: #3b82f6; /* blue-500 */
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+.customInput::placeholder {
+  
+  opacity: 1;
+} 
