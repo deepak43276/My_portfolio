@@ -10,7 +10,7 @@ const Hero = () => {
 
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative bg-gray-900">
-      <div className="container mx-auto px-6 text-center relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 text-center relative z-10">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -20,8 +20,8 @@ const Hero = () => {
             visible: { transition: { staggerChildren: 0.15 } }
           }}
         >
-          <motion.h1
-            className="whitespace-nowrap text-[4.5rem] font-extrabold mb-6 bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-300 bg-clip-text text-transparent drop-shadow-lg text-center min-w-max leading-[1.2]"
+                      <motion.h1
+              className="text-1xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-6xl 2xl:text-6xl font-extrabold mb-4 sm:mb-6 text-violet-300 drop-shadow-lg text-center leading-tight sm:leading-[1.1] px-2 whitespace-nowrap"
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false }}
@@ -30,7 +30,7 @@ const Hero = () => {
             Let's Build the Future Together
           </motion.h1>
           <motion.p
-            className="text-xl md:text-2xl text-blue-200 mb-4"
+            className="text-base md:text-xl  lg:text-2xl xl:text-2xl 2xl:text-4xl text-blue-200 mb-3 sm:mb-4 px-4"
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false }}
@@ -39,7 +39,7 @@ const Hero = () => {
             Empowering ideas with code, creativity, and cutting-edge frameworks.
           </motion.p>
           <motion.p
-            className="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto"
+            className="hidden sm:block text-base sm:text-lg md:text-xl text-gray-300 mb-6 sm:mb-8 max-w-2xl mx-auto px-4"
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false }}
@@ -48,7 +48,7 @@ const Hero = () => {
             Explore a world where technology meets Innovation. Discover attractive designs, seamless user experiences, and the excellence of digital work.
           </motion.p>
           <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+            className="flex flex-row gap-3 sm:gap-4 justify-center items-center px-4"
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false }}
@@ -56,7 +56,7 @@ const Hero = () => {
           >
             <Button 
               size="lg" 
-              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white px-8 py-3 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg shadow-blue-500/20"
+              className="w-auto bg-gradient-to-r from-blue-800 to-blue-900 hover:from-blue-700 hover:to-blue-800 text-white px-4 sm:px-6 lg:px-8 py-2 sm:py-3 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg shadow-blue-800/20 text-xs sm:text-sm lg:text-base"
               onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}
             >
               Explore Projects
@@ -64,7 +64,7 @@ const Hero = () => {
             <Button 
               variant="outline" 
               size="lg"
-              className="px-8 py-3 rounded-full border-2 border-blue-400 text-blue-300 hover:bg-gray-800 hover:text-white transition-all duration-300 transform hover:scale-105 shadow-md"
+              className="w-auto px-4 sm:px-6 lg:px-8 py-2 sm:py-3 rounded-full border-2 border-blue-400 text-blue-300 hover:bg-gray-800 hover:text-white transition-all duration-300 transform hover:scale-105 shadow-md text-xs sm:text-sm lg:text-base"
               onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
             >
               Contact Us
@@ -75,12 +75,12 @@ const Hero = () => {
       
       <motion.button 
         onClick={scrollToNext}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+        className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2"
         animate={{ y: [0, -10, 0] }}
         transition={{ repeat: Infinity, duration: 1.2, ease: "easeInOut" }}
         whileHover={{ scale: 1.2 }}
       >
-        <ArrowDown className="w-6 h-6 text-blue-300" />
+        <ArrowDown className="w-5 h-5 sm:w-6 sm:h-6 text-blue-300" />
       </motion.button>
     </section>
   );

@@ -2,36 +2,36 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
+import SkillIcon from "./SkillIcon";
 
 const Skills = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
 
   const frontendSkills = [
-    { name: "HTML5", icon: "🌐" },
-    { name: "CSS3", icon: "🎨" },
-    { name: "JavaScript", icon: "⚡" },
-    { name: "React", icon: "⚛" },
-    { name: "Next.js", icon: "🚀" },
-    { name: "Tailwind CSS", icon: "💨" },
+    { name: "HTML5" },
+    { name: "CSS3" },
+    { name: "JavaScript" },
+    { name: "React" },
+    { name: "Next.js" },
+    { name: "Tailwind CSS" },
   ];
 
   const backendSkills = [
-    { name: "Node.js", icon: "🟢" },
-    { name: "Express", icon: "🔧" },
-    { name: "Python", icon: "🐍" },
-    { name: "Java", icon: "☕" },
-    { name: "MongoDB", icon: "🍃" },
-    { name: "MySQL", icon: "🗄" },
+    { name: "Node.js" },
+    { name: "Express" },
+    { name: "Python" },
+    { name: "Java" },
+    { name: "MongoDB" },
+    { name: "MySQL" },
   ];
 
   const tools = [
-    { name: "Git", icon: "📝" },
-    { name: "VS Code", icon: "💻" },
-    { name: "Postman", icon: "📮" },
-    { name: "Docker", icon: "🐳" },
-    { name: "AWS", icon: "☁" },
-    { name: "Firebase", icon: "🔥" },
+    { name: "Git" },
+    { name: "VS Code" },
+    { name: "Postman" },
+    { name: "Docker" },
+    { name: "npm" },
   ];
 
   const allSkills = [
@@ -58,7 +58,7 @@ const Skills = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} id="skills" className="py-20 bg-gray-900 relative overflow-hidden">
+    <section ref={sectionRef} id="skills" className="py-12 sm:py-16 md:py-20 bg-gray-900 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-5 pointer-events-none">
         <motion.div
@@ -72,10 +72,11 @@ const Skills = () => {
           transition={{ repeat: Infinity, duration: 7, ease: "easeInOut", delay: 1 }}
         />
       </div>
-      <div className="container mx-auto px-6 relative z-10">
-        <motion.div className="text-center mb-16">
+
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
+        <motion.div className="text-center mb-8 sm:mb-12 md:mb-16">
           <motion.h2
-            className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-300 bg-clip-text text-transparent"
+            className="text-3xl sm:text-4xl font-bold mb-4 text-violet-300"
             initial={{ opacity: 0, y: 40 }}
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, ease: "easeOut" }}
@@ -83,24 +84,25 @@ const Skills = () => {
             Technical Skills
           </motion.h2>
         </motion.div>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 justify-center">
+
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 sm:gap-3 justify-center">
           {allSkills.map((skill, index) => (
             <motion.div
               key={skill.name}
-              className="group flex items-center justify-center gap-2 px-4 py-2 bg-gray-800 rounded-full border border-gray-700 hover:shadow-lg transition-all duration-300 min-w-[120px] max-w-[140px]"
-              initial={{ opacity: 0, scale: 0.7 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: false }}
-              transition={{ duration: 0.5, delay: index * 0.1, ease: "easeOut" }}
+              className="group flex items-center justify-center gap-1 sm:gap-2 px-2 sm:px-4 py-2 sm:py-3 bg-gray-800 rounded-full border border-gray-700 hover:shadow-lg transition-all duration-300 min-w-[80px] sm:min-w-[100px] md:min-w-[120px] max-w-[140px]"
+              initial={{ opacity: 0, scale: 0.7, y: 20 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
+              viewport={{ once: false, amount: 0.1 }}
+              transition={{ duration: 0.4, delay: index * 0.08, ease: "easeOut" }}
               whileHover={{ scale: 1.08, boxShadow: "0 4px 24px 0 rgba(59,130,246,0.15)" }}
             >
-              <motion.span
-                className="text-lg group-hover:scale-110 transition-transform duration-300"
+              <motion.div
+                className="group-hover:scale-110 transition-colors duration-300"
                 whileHover={{ scale: 1.2 }}
               >
-                {skill.icon}
-              </motion.span>
-              <span className="text-sm font-medium text-blue-300 group-hover:text-blue-200 transition-colors">
+                <SkillIcon name={skill.name} className="text-lg sm:text-xl" />
+              </motion.div>
+              <span className="text-xs sm:text-sm font-medium text-blue-300 group-hover:text-blue-200 transition-colors">
                 {skill.name}
               </span>
             </motion.div>

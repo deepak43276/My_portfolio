@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Github, Linkedin, Youtube } from "lucide-react";
+import { Github, Linkedin, Youtube, Send } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { motion } from "framer-motion";
@@ -33,7 +33,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-gray-900 relative">
+    <section id="contact" className="py-12 sm:py-16 md:py-20 bg-gray-900 relative">
       {/* Background elements */}
       <div className="absolute inset-0 opacity-10 pointer-events-none">
         <motion.div
@@ -48,9 +48,9 @@ const Contact = () => {
         />
       </div>
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <motion.h2
-          className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-300 bg-clip-text text-transparent"
+          className="text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12 text-violet-300"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false }}
@@ -60,7 +60,7 @@ const Contact = () => {
         </motion.h2>
         
         <motion.div
-          className="max-w-4xl mx-auto grid md:grid-cols-2 gap-12"
+          className="max-w-4xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, amount: 0.2 }}
@@ -70,7 +70,7 @@ const Contact = () => {
           }}
         >
           <motion.div
-            className="space-y-8"
+            className="space-y-6 sm:space-y-8"
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, ease: "easeOut" }}
@@ -78,7 +78,7 @@ const Contact = () => {
           >
             <div>
               <motion.h3
-                className="text-2xl font-semibold mb-4 text-white"
+                className="text-xl sm:text-2xl font-semibold mb-3 sm:mb-4 text-white"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
@@ -87,7 +87,7 @@ const Contact = () => {
                 Get In Touch
               </motion.h3>
               <motion.p
-                className="text-gray-300 leading-relaxed"
+                className="text-gray-300 leading-relaxed text-sm sm:text-base"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
@@ -104,10 +104,10 @@ const Contact = () => {
                 transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
                 viewport={{ once: false }}
               >
-                <h4 className="font-semibold mb-2 text-white">Email</h4>
+                <h4 className="font-semibold mb-2 text-white text-sm sm:text-base">Email</h4>
                 <a 
                   href="mailto:deepak91913@gmail.com" 
-                  className="text-gray-400 hover:text-blue-400 transition-colors duration-200"
+                  className="text-gray-400 hover:text-blue-400 transition-colors duration-200 text-sm sm:text-base"
                 >
                   deepak91913@gmail.com
                 </a>
@@ -118,10 +118,10 @@ const Contact = () => {
                 transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
                 viewport={{ once: false }}
               >
-                <h4 className="font-semibold mb-2 text-white">Phone</h4>
+                <h4 className="font-semibold mb-2 text-white text-sm sm:text-base">Phone</h4>
                 <a 
                   href="tel:+916374294597" 
-                  className="text-gray-400 hover:text-blue-400 transition-colors duration-200"
+                  className="text-gray-400 hover:text-blue-400 transition-colors duration-200 text-sm sm:text-base"
                 >
                   +91 6374294597
                 </a>
@@ -131,7 +131,7 @@ const Contact = () => {
           
           <motion.form
             onSubmit={handleSubmit}
-            className="space-y-6 bg-gray-800 p-8 rounded-2xl shadow-lg border border-gray-700"
+            className="space-y-4 sm:space-y-6 bg-gray-800 p-6 sm:p-8 rounded-2xl shadow-lg border border-gray-700"
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, ease: "easeOut" }}
@@ -162,15 +162,16 @@ const Contact = () => {
                 placeholder="Your Message"
                 value={formData.message}
                 onChange={handleChange}
-                rows={5}
+                rows={4}
                 required
               />
             </div>
             <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
               <Button 
                 type="submit" 
-                className="w-full h-12 bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white rounded-lg transition-all"
+                className="w-full h-10 sm:h-12 bg-gradient-to-r from-blue-800 to-blue-900 hover:from-blue-700 hover:to-blue-800 text-white rounded-lg transition-all text-sm sm:text-base flex items-center justify-center gap-2"
               >
+                <Send className="w-4 h-4 sm:w-5 sm:h-5" />
                 Send Message
               </Button>
             </motion.div>

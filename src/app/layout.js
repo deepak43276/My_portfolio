@@ -12,11 +12,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Deepak M - Full Stack Developer Portfolio",
-  description: "Professional portfolio of Deepak M, Full Stack Developer specializing in modern web technologies and responsive applications.",
+  title: "Deepak's Portfolio",
+    description: "Professional portfolio showcasing  projects and technical expertise.",
   openGraph: {
-    title: "Deepak M - Full Stack Developer Portfolio",
-    description: "Professional portfolio showcasing modern web development projects and technical expertise.",
+    title: "Deepak's Portfolio",
+    description: "Professional portfolio showcasing  projects and technical expertise.",
     type: "website",
     images: [
       "https://lovable.dev/opengraph-image-p98pqg.png"
