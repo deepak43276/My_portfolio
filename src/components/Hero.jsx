@@ -27,7 +27,7 @@ const Hero = () => {
             viewport={{ once: false }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
           >
-            Let's Build the Future Together
+           Hi
           </motion.h1>
           <motion.p
             className="text-sm md:text-lg lg:text-xl xl:text-xl 2xl:text-2xl text-blue-200 mb-3 sm:mb-4 px-4"
