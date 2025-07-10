@@ -1,5 +1,3 @@
-"use client";
-
 import "devicon/devicon.min.css";
 
 const SkillIcon = ({ name, className }) => {

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { FaDownload, FaGraduationCap, FaUniversity, FaStar, FaCode, FaLaptopCode } from "react-icons/fa";
+import { FaDownload, FaGraduationCap, FaCode, FaLaptop } from "react-icons/fa";
 
 const skills = ["React", "Next.js", "Node.js", "Tailwind CSS", "MongoDB", "TypeScript"];
 
@@ -34,16 +34,14 @@ const About = () => {
 
       <div className="container mx-auto px-4 sm:px-6 max-w-6xl">
         {/* Decorative header */}
-        <motion.div 
-          className="flex justify-center mb-8 sm:mb-12 md:mb-16"
+        <motion.h2
+          className="text-3xl sm:text-4xl md:text-5xl font-bold text-violet-300 relative flex justify-center mb-8 sm:mb-12 md:mb-16"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-violet-300 relative">
-            About Me
-          </h2>
-        </motion.div>
+          About Me
+        </motion.h2>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 relative z-10">
           {/* Left Column - Profile Card */}
@@ -107,7 +105,7 @@ const About = () => {
               transition={{ duration: 0.7, delay: 0.2 }}
             >
               <div className="absolute left-0 -ml-3 mt-1 w-6 h-6 rounded-full bg-blue-500 flex items-center justify-center">
-                <FaLaptopCode className="text-white text-xs" />
+                <FaLaptop className="text-white text-xs" />
               </div>
               <h3 className="text-lg sm:text-xl font-semibold mb-2 text-white">Experience</h3>
               <ul className="space-y-3 text-gray-300">
