@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useEffect } from "react";
 
 const Navigation = () => {
@@ -15,43 +17,38 @@ const Navigation = () => {
 
   useEffect(() => {
     const sections = ["home", "about", "skills", "projects", "contact"];
-    
-    const observerOptions = {
-      root: null,
-      rootMargin: "-20% 0px -70% 0px",
-      threshold: 0
-    };
+    const sectionElements = sections.map(id => document.getElementById(id));
 
-    const observerCallback = (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setActiveSection(entry.target.id);
+    function getClosestSection() {
+      const scrollY = window.scrollY;
+      const offset = 80; // height of nav + some margin
+      let closest = null;
+      let minDistance = Infinity;
+      sectionElements.forEach((el, idx) => {
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          const distance = Math.abs(rect.top - offset);
+          if (distance < minDistance) {
+            minDistance = distance;
+            closest = sections[idx];
+          }
         }
       });
-    };
+      if (closest) setActiveSection(closest);
+    }
 
-    const observer = new IntersectionObserver(observerCallback, observerOptions);
-
-    sections.forEach((sectionId) => {
-      const element = document.getElementById(sectionId);
-      if (element) {
-        observer.observe(element);
-      }
-    });
-
-    return () => {
-      sections.forEach((sectionId) => {
-        const element = document.getElementById(sectionId);
-        if (element) {
-          observer.unobserve(element);
-        }
-      });
-    };
+    window.addEventListener("scroll", getClosestSection, { passive: true });
+    getClosestSection();
+    return () => window.removeEventListener("scroll", getClosestSection);
   }, []);
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
-    element?.scrollIntoView({ behavior: "smooth" });
+    if (element) {
+      const yOffset = -80; // offset for fixed nav
+      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: "smooth" });
+    }
     setMenuOpen(false);
   };
 
@@ -64,9 +61,20 @@ const Navigation = () => {
   ];
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 ${
-      isScrolled ? "bg-gray-900/95 backdrop-blur-md border-b border-gray-800" : "bg-transparent"
-    }`}>
+    <nav 
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 99999,
+        background: isScrolled ? 'rgba(30,30,30,0.98)' : 'rgba(30,30,30,1)',
+        color: 'white',
+        minHeight: '60px',
+        transition: 'all 0.3s',
+      }}
+      className="w-full"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
         <div className="flex justify-between items-center">
           <button 
@@ -82,7 +90,7 @@ const Navigation = () => {
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`transition-colors duration-200 relative group text-sm lg:text-base ${
+                className={`transition-all duration-200 relative group text-sm lg:text-base font-medium ${
                   activeSection === item.id 
                     ? "text-white" 
                     : "text-blue-200 hover:text-white"
@@ -98,13 +106,17 @@ const Navigation = () => {
           
           {/* Mobile menu button */}
           <button
-            className={`md:hidden flex flex-col justify-center items-center w-8 h-8  sm:w-10 sm:h-10 focus:outline-none ${menuOpen ? 'bg-gray-800' : 'hover:bg-gray-800'}`}
+            className={`md:hidden flex flex-col justify-center items-center w-8 h-8 sm:w-10 sm:h-10 focus:outline-none rounded-lg transition-colors duration-200 ${
+              menuOpen 
+                ? 'bg-gray-800 text-white' 
+                : 'hover:bg-gray-800/50 text-blue-300'
+            }`}
             onClick={() => setMenuOpen((prev) => !prev)}
             aria-label={menuOpen ? "Close menu" : "Open menu"}
           >
             {menuOpen ? (
               <svg
-                className="w-5 h-5  sm:w-7 sm:h-8 text-blue-300"
+                className="w-5 h-5 sm:w-6 sm:h-6"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -119,7 +131,7 @@ const Navigation = () => {
               </svg>
             ) : (
               <svg
-                className="w-5 h-5 sm:w-6 sm:h-6 text-blue-300"
+                className="w-5 h-5 sm:w-6 sm:h-6"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -138,12 +150,12 @@ const Navigation = () => {
         
         {/* Mobile menu */}
         {menuOpen && (
-          <div className="md:hidden mt-3 sm:mt-4 flex flex-col space-y-2 sm:space-y-4 bg-gray-900/95 p-4 sm:p-6 rounded-lg shadow-lg border border-gray-800">
+          <div className="md:hidden mt-3 sm:mt-4 flex flex-col space-y-2 sm:space-y-4 bg-gray-900/95 backdrop-blur-md p-4 sm:p-6 rounded-lg shadow-lg border border-gray-800">
             {navItems.map((item, idx) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`text-base sm:text-lg text-left rounded-lg hover:bg-gray-800 px-3 sm:px-4 py-2 sm:py-3 ${
+                className={`text-base sm:text-lg text-left rounded-lg hover:bg-gray-800 px-3 sm:px-4 py-2 sm:py-3 transition-all duration-200 ${
                   activeSection === item.id 
                     ? "text-white bg-blue-600/20" 
                     : "text-blue-200 hover:text-white"

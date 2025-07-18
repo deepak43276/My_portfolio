@@ -51,10 +51,10 @@ const Contact = () => {
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <motion.h2
           className="text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12 text-violet-300"
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
         >
           Let's Connect
         </motion.h2>
@@ -63,26 +63,26 @@ const Contact = () => {
           className="max-w-4xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12"
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: false, amount: 0.2 }}
+          viewport={{ once: true, amount: 0.2 }}
           variants={{
             hidden: {},
-            visible: { transition: { staggerChildren: 0.18 } }
+            visible: { transition: { staggerChildren: 0.1 } }
           }}
         >
           <motion.div
             className="space-y-6 sm:space-y-8"
-            initial={{ opacity: 0, x: -40 }}
+            initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
-            viewport={{ once: false }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            viewport={{ once: true }}
           >
             <div>
               <motion.h3
                 className="text-xl sm:text-2xl font-semibold mb-3 sm:mb-4 text-white"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
-                viewport={{ once: false }}
+                transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
+                viewport={{ once: true }}
               >
                 Get In Touch
               </motion.h3>
@@ -90,8 +90,8 @@ const Contact = () => {
                 className="text-gray-300 leading-relaxed text-sm sm:text-base"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
-                viewport={{ once: false }}
+                transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
+                viewport={{ once: true }}
               >
                 I'm always interested in hearing about new opportunities and exciting projects. 
                 Whether you have a question or just want to say hi, feel free to reach out!
@@ -101,8 +101,8 @@ const Contact = () => {
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
-                viewport={{ once: false }}
+                transition={{ duration: 0.5, delay: 0.3, ease: "easeOut" }}
+                viewport={{ once: true }}
               >
                 <h4 className="font-semibold mb-2 text-white text-sm sm:text-base">Email</h4>
                 <a 
@@ -115,8 +115,8 @@ const Contact = () => {
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
-                viewport={{ once: false }}
+                transition={{ duration: 0.5, delay: 0.4, ease: "easeOut" }}
+                viewport={{ once: true }}
               >
                 <h4 className="font-semibold mb-2 text-white text-sm sm:text-base">Phone</h4>
                 <a 
@@ -132,10 +132,10 @@ const Contact = () => {
           <motion.form
             onSubmit={handleSubmit}
             className="space-y-4 sm:space-y-6 bg-gray-800 p-6 sm:p-8 rounded-2xl shadow-lg border border-gray-700"
-            initial={{ opacity: 0, x: 40 }}
+            initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
-            viewport={{ once: false }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            viewport={{ once: true }}
           >
             <div>
               <Input
@@ -166,9 +166,9 @@ const Contact = () => {
                 required
               />
             </div>
-            <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
-              <Button 
-                type="submit" 
+            <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+              <Button
+                type="submit"
                 className="w-full h-10 sm:h-12 bg-gradient-to-r from-blue-800 to-blue-900 hover:from-blue-700 hover:to-blue-800 text-white rounded-lg transition-all text-sm sm:text-base flex items-center justify-center gap-2"
               >
                 <Send className="w-4 h-4 sm:w-5 sm:h-5" />

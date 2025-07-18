@@ -8,7 +8,20 @@ const withBundleAnalyzer = createBundleAnalyzer({
 const nextConfig = {
   // Bundle analyzer only works with Webpack, not Turbopack
   // So we'll only apply it when ANALYZE=true
-  ...(process.env.ANALYZE === 'true' ? {} : {})
+  ...(process.env.ANALYZE === 'true' ? {} : {}),
+  
+  // Performance optimizations
+  experimental: {
+    optimizePackageImports: ['framer-motion', 'lucide-react', 'react-icons'],
+  },
+  
+  // Enable compression
+  compress: true,
+  
+  // Optimize images
+  images: {
+    formats: ['image/webp', 'image/avif'],
+  },
 };
 
 export default process.env.ANALYZE === 'true' 

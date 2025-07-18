@@ -6,32 +6,54 @@ import { motion, AnimatePresence } from "framer-motion";
 const Projects = () => {
   const projects = [
     {
-      title: "Incident Reporter System",
-      description: "Built an incident management solution using JavaScript and CSS animations for interactive alerts. Developed responsive UI using React/Vue.js, reducing response time by 40% via real-time browser notifications.",
-      tech: ["JavaScript", "React", "CSS", "Node.js"],
-      date: "May 2024",
-      teamSize: "Solo"
+      title: "AI Interview Platform",
+      role: "Full Stack Developer",
+      links: [
+        { label: "GitHub", url: "https://github.com/deepak43276/ai_interview_platform" },
+        { label: "Live Demo", url: "https://ai-interview-platform-swart.vercel.app/" }
+      ],
+      date: "May 2025",
+      description: [
+        "Built a full-stack voice-driven interview platform with real-time Q&A based on role using OpenAI, voice interaction via VAPI AI, and Google OAuth authentication powered by Supabase.",
+        "Tech Stack: Next.js, React, Tailwind CSS, Supabase (PostgreSQL, Auth), OpenAI, VAPI AI, Lucide."
+      ]
     },
     {
-      title: "Online Access Tracker",
-      description: "Built a direct browser-based ecommerce platform using PHP and MySQL with comprehensive admin panel. Included dynamic product catalog, user/admin roles, and full-featured admin dashboard for order management.",
-      tech: ["PHP", "MySQL", "JavaScript", "CSS"],
-      date: "Oct 2024",
-      teamSize: "3 Members"
+      title: "Excel Analysis Platform",
+      role: "Full Stack Developer",
+      links: [
+        { label: "GitHub", url: "https://github.com/deepak43276/Excel_Analysis_Platform" },
+        { label: "Live Demo", url: "https://excel-analysis-platform-wine.vercel.app/" }
+      ],
+      date: "June 2025",
+      description: [
+        "Developed an Excel analytics platform with role-based authentication, secure file upload, and interactive 2D/3D data visualization using Plotly.js. Included upload history and an admin dashboard for user management.",
+        "Tech Stack: React, Vite, Tailwind CSS, Redux Toolkit, Plotly.js, Node.js, Express, MongoDB, JWT, Multer, MongoDB Atlas."
+      ]
     },
     {
-      title: "Fluffy Job Search Application",
-      description: "A job search platform built using React, Vite, and Tailwind CSS with advanced filtering and JWT-based authentication on HTTP-only cookies.",
-      tech: ["React", "Vite", "Tailwind CSS", "JWT"],
-      date: "Aug 2024",
-      teamSize: "2 Members"
+      title: "FarmSync",
+      role: "Full Stack Developer",
+      links: [
+        { label: "GitHub", url: "https://github.com/deepak43276/DirectMarket" }
+      ],
+      date: "Oct 2023",
+      description: [
+        "Developed a responsive farmer-to-buyer marketplace enabling direct trade, product listing, and role-based authentication. Designed with a clean UI and PHP-MySQL backend to manage users, products, and transactions.",
+        "Tech Stack: HTML5, CSS3, JavaScript, PHP, MySQL."
+      ]
     },
     {
-      title: "BitShop E-Commerce",
-      description: "Created a MERN-based e-shopping platform with JWT auth, responsive UI using Tailwind CSS, and a full-featured admin dashboard for order management.",
-      tech: ["MongoDB", "Express", "React", "Node.js", "Tailwind"],
-      date: "Jun 2024",
-      teamSize: "4 Members"
+      title: "Job Search Platform",
+      role: "Full Stack Developer",
+      links: [
+        { label: "GitHub", url: "https://github.com/deepak43276/Findy_Application" }
+      ],
+      date: "July 2025",
+      description: [
+        "Designed and developed a job portal enabling candidates to apply, employers to manage listings, and admins to oversee operations — secured with JWT-based authentication and role-specific dashboards.",
+        "Tech Stack: Next.js, Tailwind CSS, TypeScript, Spring Boot, PostgreSQL, JWT, BCrypt."
+      ]
     }
   ];
 
@@ -99,7 +121,7 @@ const Projects = () => {
       opacity: 1,
       filter: 'blur(0)',
       transition: {
-        duration: 0.8,
+        duration: 0.5,
         ease: [0.16, 1, 0.3, 1]
       }
     },
@@ -108,7 +130,7 @@ const Projects = () => {
       opacity: 0,
       filter: 'blur(4px)',
       transition: {
-        duration: 0.8,
+        duration: 0.5,
         ease: [0.16, 1, 0.3, 1]
       }
     })
@@ -132,7 +154,7 @@ const Projects = () => {
             className="text-3xl sm:text-4xl font-bold text-violet-300"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false }}
+            viewport={{ once: true }}
             transition={{ duration: 0.5, ease: "easeOut" }}
           >
             Featured Projects
@@ -198,33 +220,23 @@ const Projects = () => {
                     {project.date}
                   </span>
                 </div>
-                
-                <p className="text-gray-300 mb-6 sm:mb-8 leading-relaxed text-sm sm:text-base">
-                  {project.description}
-                </p>
-                
-                <div className="flex flex-wrap gap-2 mb-6 sm:mb-8">
-                  {project.tech.map((tech) => (
-                    <span 
-                      key={tech}
-                      className="px-2 sm:px-3 py-1 bg-gray-900/50 text-gray-200 rounded-full text-xs font-medium hover:bg-blue-900/50 hover:text-blue-200 transition-colors"
-                    >
-                      {tech}
-                    </span>
+                <div className="text-gray-300 mb-6 sm:mb-8 leading-relaxed text-sm sm:text-base">
+                  {project.description.map((desc, i) => (
+                    <p key={i} className="mb-2 last:mb-0">{desc}</p>
                   ))}
                 </div>
-                
-                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-center">
-                  <Button
-                    size="sm"
-                    className="flex items-center gap-2 bg-gray-700 hover:bg-blue-700 text-white transition-all text-xs sm:text-sm"
-                  >
-                    <Github className="w-3 h-3 sm:w-4 sm:h-4" />
-                    Code
-                  </Button>
-                  <span className="text-xs sm:text-sm text-blue-300 bg-blue-900/30 px-2 sm:px-3 py-1 rounded-full">
-                    Team Size: {project.teamSize}
-                  </span>
+                <div className="flex flex-wrap gap-2 mb-6 sm:mb-8">
+                  {project.links && project.links.map((link, i) => (
+                    <a
+                      key={i}
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-2 sm:px-3 py-1 bg-blue-900/70 text-blue-200 rounded-full text-xs font-medium hover:bg-blue-800 hover:text-white transition-colors"
+                    >
+                      {link.label}
+                    </a>
+                  ))}
                 </div>
               </motion.div>
             ))}
@@ -239,7 +251,6 @@ const Projects = () => {
             >
               <ChevronLeft className="w-4 h-4 sm:w-6 sm:h-6" />
             </button>
-            
             <button
               onClick={handleNext}
               className="absolute -right-4 sm:-right-6 top-1/2 -translate-y-1/2 z-20 p-2 sm:p-3 rounded-full bg-gray-800 hover:bg-blue-700 text-gray-300 hover:text-white transition-all shadow-lg"
@@ -247,7 +258,6 @@ const Projects = () => {
             >
               <ChevronRight className="w-4 h-4 sm:w-6 sm:h-6" />
             </button>
-
             {/* Carousel container */}
             <div className="relative w-full h-[400px] sm:h-[350px] md:h-[400px] overflow-hidden">
               <AnimatePresence 
@@ -274,40 +284,29 @@ const Projects = () => {
                           {projects[currentIndex].date}
                         </span>
                       </div>
-                      
-                      <p className="text-gray-300 mb-6 sm:mb-8 leading-relaxed text-sm sm:text-base">
-                        {projects[currentIndex].description}
-                      </p>
-                      
-                      <div className="flex flex-wrap gap-2 mb-6 sm:mb-8">
-                        {projects[currentIndex].tech.map((tech) => (
-                          <span 
-                            key={tech}
-                            className="px-2 sm:px-3 py-1 bg-gray-900/50 text-gray-200 rounded-full text-xs font-medium hover:bg-blue-900/50 hover:text-blue-200 transition-colors"
-                          >
-                            {tech}
-                          </span>
+                      <div className="text-gray-300 mb-6 sm:mb-8 leading-relaxed text-sm sm:text-base">
+                        {projects[currentIndex].description.map((desc, i) => (
+                          <p key={i} className="mb-2 last:mb-0">{desc}</p>
                         ))}
                       </div>
-                    </div>
-                    
-                    <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-center">
-                      <Button
-                        size="sm"
-                        className="flex items-center gap-2 bg-gray-700 hover:bg-blue-700 text-white transition-all text-xs sm:text-sm"
-                      >
-                        <Github className="w-3 h-3 sm:w-4 sm:h-4" />
-                        Code
-                      </Button>
-                      <span className="text-xs sm:text-sm text-blue-300 bg-blue-900/30 px-2 sm:px-3 py-1 rounded-full">
-                        Team Size: {projects[currentIndex].teamSize}
-                      </span>
+                      <div className="flex flex-wrap gap-2 mb-6 sm:mb-8">
+                        {projects[currentIndex].links && projects[currentIndex].links.map((link, i) => (
+                          <a
+                            key={i}
+                            href={link.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-2 sm:px-3 py-1 bg-blue-900/70 text-blue-200 rounded-full text-xs font-medium hover:bg-blue-800 hover:text-white transition-colors"
+                          >
+                            {link.label}
+                          </a>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </motion.div>
               </AnimatePresence>
             </div>
-
             {/* Project indicators */}
             <div className="absolute bottom-2 sm:bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
               {projects.map((_, index) => (

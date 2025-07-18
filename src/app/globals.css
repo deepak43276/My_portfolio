@@ -36,6 +36,31 @@ html {
   max-width: 100vw;
 }
 
+/* Animation performance optimizations */
+/* Removed global transform and perspective to fix fixed positioning */
+* {
+  backface-visibility: hidden;
+}
+
+/* Optimize transitions */
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 input,
 input:-webkit-autofill,
 input:-webkit-autofill:focus,

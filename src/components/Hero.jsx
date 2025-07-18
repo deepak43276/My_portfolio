@@ -10,14 +10,14 @@ const Hero = () => {
 
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative bg-gray-900">
-      <div className="container mx-auto px-4 sm:px-6 text-center relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 text-center relative z-1">
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
           variants={{
             hidden: {},
-            visible: { transition: { staggerChildren: 0.15 } }
+            visible: { transition: { staggerChildren: 0.1 } }
           }}
         >
           <motion.h1
@@ -25,7 +25,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
+            transition={{ duration: 0.5, ease: 'easeOut' }}
           >
             {"Let's Build the Future Together"}
           </motion.h1>
@@ -34,7 +34,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
           >
             Empowering ideas with code, creativity, and cutting-edge frameworks.
           </motion.p>
@@ -43,7 +43,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+            transition={{ duration: 0.5, delay: 0.4, ease: "easeOut" }}
           >
             Explore a world where technology meets Innovation. Discover attractive designs, seamless user experiences, and the excellence of digital work.
           </motion.p>
@@ -52,9 +52,9 @@ const Hero = () => {
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+            transition={{ duration: 0.5, delay: 0.6, ease: "easeOut" }}
           >
-            <Button 
+            <Button
               size="lg" 
               className="w-auto bg-gradient-to-r from-blue-800 to-blue-900 hover:from-blue-700 hover:to-blue-800 text-white px-4 sm:px-6 lg:px-8 py-2 sm:py-3 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg shadow-blue-800/20 text-xs sm:text-sm lg:text-base"
               onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}
@@ -64,7 +64,7 @@ const Hero = () => {
             <Button 
               variant="outline" 
               size="lg"
-              className="w-auto px-4 sm:px-6 lg:px-8 py-2 sm:py-3 rounded-full border-2 border-blue-400 text-blue-300 hover:bg-gray-800 hover:text-white transition-all duration-300 transform hover:scale-105 shadow-md text-xs sm:text-sm lg:text-base flex items-center gap-2"
+              className="w-auto px-4 sm:px-6 lg:px-8 py-2 sm:py-3 rounded-full border-2 border-blue-400 text-blue-300 hover:bg-gray-800 hover:text-white transition-colors duration-300 transform hover:scale-105 shadow-md text-xs sm:text-sm lg:text-base flex items-center gap-2"
               onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
             >
               Get in Touch <ArrowDown className="w-4 h-4 ml-1" />

@@ -14,7 +14,7 @@ const About = () => {
           x: [0, 15, 0]
         }}
         transition={{
-          duration: 8,
+          duration: 6,
           repeat: Infinity,
           ease: "easeInOut"
         }}
@@ -26,7 +26,7 @@ const About = () => {
           opacity: [0.1, 0.3, 0.1]
         }}
         transition={{
-          duration: 12,
+          duration: 8,
           repeat: Infinity,
           ease: "easeInOut"
         }}
@@ -38,19 +38,19 @@ const About = () => {
           className="text-3xl sm:text-4xl md:text-5xl font-bold text-violet-300 relative flex justify-center mb-8 sm:mb-12 md:mb-16"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.5 }}
         >
           About Me
         </motion.h2>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
           {/* Left Column - Profile Card */}
           <motion.div
             className="bg-gray-800 rounded-2xl shadow-2xl p-6 sm:p-8 border-t-4 border-blue-500 transform hover:-translate-y-2 transition-transform duration-300"
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: false, amount: 0.2 }}
-            transition={{ duration: 0.7 }}
+            transition={{ duration: 0.5 }}
           >
             <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
               <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-violet-600 flex items-center justify-center text-white text-xl sm:text-2xl">
@@ -80,7 +80,7 @@ const About = () => {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false, amount: 0.2 }}
-              transition={{ duration: 0.7, delay: 0.1 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
             >
               <div className="absolute left-0 -ml-3 mt-1 w-6 h-6 rounded-full bg-purple-500 flex items-center justify-center">
                 <FaGraduationCap className="text-white text-xs" />
@@ -102,7 +102,7 @@ const About = () => {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false, amount: 0.2 }}
-              transition={{ duration: 0.7, delay: 0.2 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
             >
               <div className="absolute left-0 -ml-3 mt-1 w-6 h-6 rounded-full bg-blue-500 flex items-center justify-center">
                 <FaLaptop className="text-white text-xs" />
@@ -128,7 +128,7 @@ const About = () => {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false, amount: 0.2 }}
-              transition={{ duration: 0.7, delay: 0.5 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
             >
               <h3 className="text-lg sm:text-xl font-semibold mb-3 text-white">Philosophy</h3>
               <p className="text-gray-300 italic text-sm sm:text-base">
@@ -143,7 +143,7 @@ const About = () => {
               whileTap={{ scale: 0.98 }}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.6 }}
+              transition={{ duration: 0.5, delay: 0.6 }}
             >
               <FaDownload className="group-hover:animate-bounce" />
               <span>Download Resume</span>
