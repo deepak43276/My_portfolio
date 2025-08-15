@@ -136,7 +136,7 @@ const About = () => {
               </p>
             </motion.div>
             <motion.a
-              href="/resume.pdf"
+              href="/DEEPAK_M_RESUME.pdf"
               download
               className="block w-full px-4 sm:px-6 py-3 sm:py-4 rounded-xl bg-gradient-to-r from-blue-800 to-blue-900 hover:from-blue-700 hover:to-blue-800 text-white font-semibold shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-3 group text-sm sm:text-base"
               whileHover={{ scale: 1.02 }}
