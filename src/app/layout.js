@@ -19,19 +19,8 @@ const inter = Inter({
 export const metadata = {
   title: "Deepak's Portfolio",
     description: "Professional portfolio showcasing  projects and technical expertise.",
-  openGraph: {
-    title: "Deepak's Portfolio",
-    description: "Professional portfolio showcasing  projects and technical expertise.",
-    type: "website",
-   
-  },
- twitter: {
-  card: "summary_large_image",
-  site: "@deepakm_dev",
-  images: [
-    "https://deepakm.vercel.app/opengraph-image.png"
-  ]
-}
+ 
+ 
 
 };
 
