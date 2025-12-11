@@ -25,13 +25,14 @@ export const metadata = {
     type: "website",
    
   },
-  twitter: {
-    card: "summary_large_image",
-    site: "@lovable_dev",
-    images: [
-      "https://lovable.dev/opengraph-image-p98pqg.png"
-    ]
-  }
+ twitter: {
+  card: "summary_large_image",
+  site: "@deepakm_dev",
+  images: [
+    "https://deepakm.vercel.app/opengraph-image.png"
+  ]
+}
+
 };
 
 export default function RootLayout({ children }) {
