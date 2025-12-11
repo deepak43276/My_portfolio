@@ -23,9 +23,7 @@ export const metadata = {
     title: "Deepak's Portfolio",
     description: "Professional portfolio showcasing  projects and technical expertise.",
     type: "website",
-    images: [
-      "https://lovable.dev/opengraph-image-p98pqg.png"
-    ]
+   
   },
   twitter: {
     card: "summary_large_image",

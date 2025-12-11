@@ -37,7 +37,6 @@ html {
 }
 
 /* Animation performance optimizations */
-/* Removed global transform and perspective to fix fixed positioning */
 * {
   backface-visibility: hidden;
 }
@@ -69,42 +68,48 @@ input:-webkit-autofill:active {
   background-color: #374151 !important; /* Tailwind's bg-gray-700 */
   color: #fff !important;
   -webkit-box-shadow: 0 0 0 1000px #374151 inset !important;
-  /* -webkit-text-fill-color: #fff !important; */
   transition: background-color 5000s ease-in-out 0s;
 }
 
-/*
-input::placeholder,
-input:focus::placeholder,
-textarea::placeholder,
-textarea:focus::placeholder {
-  color: #9ca3af !important;
-  opacity: 1;
+/* =================== Hero Background Animation =================== */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(270deg, #1e3a8a, #9333ea, #2563eb, #3b82f6);
+  background-size: 800% 800%;
+  animation: gradientMove 15s ease infinite;
+  filter: blur(60px);
 }
 
-input:-webkit-input-placeholder {
-  color: #9ca3af !important;
-}
-input::-webkit-input-placeholder {
-  color: #9ca3af !important;
-}
-input:-moz-placeholder {
-  color: #9ca3af !important;
-}
-input::-moz-placeholder {
-  color: #9ca3af !important;
-}
-input:-ms-input-placeholder {
-  color: #9ca3af !important;
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-input::placeholder,
-input::-webkit-input-placeholder,
-input:-ms-input-placeholder,
-input::-ms-input-placeholder,
-input::-moz-placeholder,
-input:-moz-placeholder {
-  color: #9ca3af !important;
-  opacity: 1 !important;
+/* Floating Particles */
+.hero-particles {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
 }
-*/
+
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  animation: floatUp linear infinite;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(100vh) scale(0.3); opacity: 0; }
+  50% { opacity: 0.5; }
+  100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+}
+
+/* Optional: adjust text shadows for Hero readability */
+.hero-text-shadow {
+  text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
